@@ -1,0 +1,48 @@
+{
+  "name": "wordpress-webpack-theme-framework",
+  "version": "1.0.0",
+  "description": "A functioning Webpack config and Wordpress theme folder structure that supports EJS and SCSS for more organized, faster Wordpress theme development",
+  "main": "dont-require-this.js",
+  "scripts": {
+    "start-webpack": "webpack --config _theme-src/_webpack/webpack-config.dev/_webpack-config.dev.js --mode development --env.development --watch",
+    "start-browser-sync": "browser-sync start --config bs-config.js",
+    "dev-build": "webpack --config _theme-src/_webpack/webpack-config.dev/_webpack-config.dev.js --mode development --env.development",
+    "build": "webpack --config _theme-src/_webpack/webpack-config.production/_webpack-config.production.js  --mode production --env.production"
+  },
+  "author": "smackjax",
+  "license": "ISC",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "autoprefixer": "^10.2.6",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.26.14",
+    "compile-ejs-loader": "0.0.3",
+    "css-loader": "^5.2.6",
+    "ejs-compiled-loader-webpack4": "^2.2.0",
+    "ejs-webpack-loader": "^2.2.2",
+    "file-loader": "^6.2.0",
+    "html-loader": "^2.1.2",
+    "html-webpack-inject-string-plugin": "^1.0.2",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "node-sass": "^6.0.0",
+    "raw-loader": "^4.0.2",
+    "responsive-loader": "^2.3.0",
+    "sass-loader": "^12.1.0",
+    "sharp": "^0.28.3",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {}
+}

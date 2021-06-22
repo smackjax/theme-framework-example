@@ -1,0 +1,54 @@
+<% 
+    var images = require('../../images');
+%>
+
+<div id="contact-modal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-title-wrapper">
+                <div class="modal-title-icon ">
+                    <img src="<%- images.icons.envelope %>" alt="Contact icon"/>
+                </div>
+                <h5 class="modal-title">CONTACT</h5>
+            </div>
+            <button id="close-contact-modal-btn" class="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-content">
+            <div class="form-wrapper">
+                <div class="contact-blurb-wrapper">
+                    <p>I enjoy discussing your thoughts, my writing, or even (some)philosophy, but I only discuss religion with my close friends.</p>
+                </div>
+
+                <form class="modal-contact-form">
+                    <label class="contact-label" for="contact-name">
+                        <span class="label-text">Name</span>
+                        <input class="contact-input text" type="text" id="contact-name" name="contact-name"/>
+                    </label>
+
+                    <label class="contact-label" for="contact-email">
+                        <span class="label-text">Email</span>
+                        <input class="contact-input text" type="text" id="contact-email" name="contact-email"/>
+                    </label>
+
+                    <label class="contact-label" for="contact-name">
+                        <span class="label-text">Message</span>
+                        <textarea class="contact-input area" type="text" id="contact-message" name="contact-message"></textarea>
+                    </label>
+
+
+                    <button class="contact-send-btn">SEND</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Digitizer -->
+    <div id="contact-digitizer" class="modal-digitizer"></div>
+</div>
+
+<script>
+    var closeContactModal = function(){ closeModal("contact-modal"); };
+    document.getElementById("contact-digitizer").addEventListener("click", closeContactModal);
+    document.getElementById("close-contact-modal-btn").addEventListener("click", closeContactModal);
+
+</script>

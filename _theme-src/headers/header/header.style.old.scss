@@ -1,0 +1,203 @@
+@import '../../style-vars.scss';
+
+.disable-scroll-from-nav {
+    overflow-y: hidden !important;
+}
+
+/* =====================
+    Base styles
+====================== */
+.main-header {
+    width: 100%;
+    // background: white;
+    // box-shadow: 0px 3px 4px 0px rgba(0,0,0,.4);
+}
+.menu-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+    padding: 15px;
+}
+.logo-wrap {
+    width: 50vw;
+    max-width: 130px;
+    min-height: 40px;
+    margin: 0 !important;
+}
+.logo-wrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* =====================
+    Mobile Nav closed
+====================== */
+.main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0vh;
+    
+    transition: height .0s ease-out .4s, opacity .2s ease-out .2s, padding-left .2s ease-in 0s;
+    opacity: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 400;
+
+    overflow: hidden;
+    background-color: rgb(240,240,240);
+
+    padding-left: 100%;
+    a {
+        position: relative;
+        z-index: 100;
+        
+    }
+
+    &.active {
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+
+.nav-item,
+.main-nav a {
+    font-family: $font-primary;
+    display: block;
+    padding: 7px 10px;
+    margin: 5px auto;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+.main-nav a:first-of-type {
+    margin-top: 20vh;
+}
+
+
+/* Hamburger btn */
+.drop-trigger {
+    /* Changing these will automatically adjust bars */
+    height: 34px;
+    width: 50px;
+    
+    /* For btn bars */
+    position: relative;
+    background: rgba(0,0,0,0);
+    transition: all .1s ease-out 0s;
+    z-index: 450;
+    border-width: 0;
+    margin-left: auto;
+}
+/* Hamburger bars */
+.drop-trigger .btn-bar {
+    position: absolute;
+    display: block;
+    top: 20%;
+    left: 50%;
+    height: 4px;
+    width: 60%;
+    transition: all .4s ease-in 0s;
+    background: rgb(250,250,250);
+    margin: 0 auto;
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(-0%) rotate(-0deg);
+}
+.btn-bar.middle {
+    top: 50%;
+    transform: translateX(-50%)  translateY(-50%) rotate(0deg);
+}
+.btn-bar.bottom {
+    top: calc(80% - 3px);
+}
+
+/* Fills background of nav and is linked to the checkbox toggle */
+.nav-revert {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0);
+    z-index: 1;
+}
+
+/* Checkbox used for toggle */
+#nav-tog {
+    display: none;
+}
+
+/* =====================
+    Mobile Nav open
+====================== */
+#nav-tog:checked ~ .drop-trigger .btn-bar {
+    transition-timing-function: ease-out;
+}
+#nav-tog:checked ~ .drop-trigger .btn-bar {
+    top: 50%;
+    background: rgb(30,30,30);
+}
+#nav-tog:checked ~ .drop-trigger .btn-bar.top {
+    transform: translateX(-50%)  translateY(-50%) rotate(-315deg);
+}
+#nav-tog:checked ~ .drop-trigger .btn-bar.middle {
+    transform: translateX(-50%)  translateY(-50%) rotate(-225deg);
+}
+#nav-tog:checked ~ .drop-trigger .btn-bar.bottom {
+    transform: translateX(-50%) translateY(-50%) rotate(-225deg);
+}
+#nav-tog:checked ~ .main-nav {
+    transition: height .0s ease-in 0s, opacity .2s ease-in 0s, padding-left .23s ease-out .21s;
+    opacity: 1;
+    height: 100vh;
+    padding-left: 0%;
+}
+
+/* ============================
+    Large screen nav
+============================= */
+@media screen and (min-width: 800px){
+    /* Hides mobile-specific elements */
+    .drop-trigger,
+    .nav-revert {
+        display: none;
+    }
+    .main-nav {
+        height: auto;
+        position: relative;
+        padding-left: 0%;
+        flex-direction: row;
+        justify-content: flex-end;
+        opacity: 1;
+        overflow: hidden;
+        background: rgba(0,0,0,0);
+        padding-top: 30px;
+    }
+    .main-nav a:first-of-type{
+        margin-top: 0;
+    }
+    .nav-item,
+    .main-nav a {
+        font-size: 18px;
+        margin: 0 5px;
+        color: rgb(250,250,250);
+        width: auto;
+    }
+    
+}

@@ -1,0 +1,60 @@
+.modal-title-icon.about {
+    font-size: 25px;
+}
+
+.twitter-link {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 200px;
+
+    margin: 10px auto 0;
+    padding: 1px;
+
+    &:hover {
+        .twitter-handle {
+            text-decoration: underline;
+        }
+    }
+}
+.twitter-icon-wrap {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+}
+ 
+
+@media screen and (min-width: 800px) {
+    #about-modal {
+        .modal-title-icon.about {
+            font-size: 4vw;   
+           }
+        .modal-title {
+            font-size: 54px;
+            @media screen and (min-width: 1200px) {
+                font-size: 4.7vw;
+            }
+            @media screen and (min-width: 1500px) {
+                font-size: 70px;
+            }
+        }
+
+        .modal-title-icon.about {
+            width: 5vw;
+            height: 6.5vw;
+            font-size: 4vw;
+            max-width: 56px;
+            max-height: 70px;
+        }
+
+        @media screen and (min-width: 1030px) {
+            .modal-title-icon.about {
+                font-size: 44px; 
+                transform: translate(-50%, -50px);
+            }
+        }
+        
+    }
+}

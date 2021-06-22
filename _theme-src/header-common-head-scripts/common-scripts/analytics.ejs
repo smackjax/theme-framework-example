@@ -1,0 +1,10 @@
+<!-- ANALYTICS -->
+<% if (process.env.NODE_ENV === 'production') { %>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script>
+        console.log("TODO add analytics tag");
+    </script>
+<% } else { %>
+    <meta name="robots" content="noindex">
+    <script>console.log("Running in dev mode: analytics disabled, noindex tag added.");</script>
+<% } %>

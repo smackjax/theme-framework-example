@@ -1,0 +1,44 @@
+body, html {
+    height: unset;
+}
+body.login {
+    background-color: rgb(230,230,230) !important;
+}
+// Replace login logo
+body.login div#login h1 a {
+    background-image: url(/wp-content/themes/jedwardkruft-theme/admin-images/logo-serif.png) !important;
+    background-position: center center !important;
+    background-size: contain !important;
+    width: 100%;
+    max-width: 170px;
+}
+
+body.login div#login {
+    background: rgb(253,253,253);
+    padding: 40px 20px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 5px 1px rgba(0,0,0,.3);
+    p.submit {
+        .button-primary {
+            background: #1C1221;
+            border-color: #000000;
+            box-shadow: 1px 1px 4px 1px rgba(0,0,0,.3);
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    p.forgetmenot:hover label,
+    
+    p#backtoblog a:hover {
+        text-decoration: underline;
+    }
+
+    // Remove 'forgot password' option
+    p#nav {
+        display: none !important;
+    }
+}
+

@@ -1,0 +1,27 @@
+@import '../../style-vars.scss';
+
+// Footer
+.main-footer {
+    padding: 20px 0 50px;
+    background-color: #f1ebe5;
+    border-top: $color-primary 4px solid;
+    .copyright {
+        text-align: center;
+        margin: 50px 0;
+    }
+    .credits {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        a {
+            text-align: center;
+            margin: 3px 0;
+            font-family: $font-secondary;
+            font-size: 16px;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    
+}

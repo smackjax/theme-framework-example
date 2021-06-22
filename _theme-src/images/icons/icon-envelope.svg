@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 51 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-630.443,-491.054)">
+        <g transform="matrix(0.853118,0,0,0.735831,83.1594,197.811)">
+            <g id="mail-envelope-closed" transform="matrix(2.36508,0,0,2.74206,632.049,376.583)">
+                <path d="M5.315,9.274C5.121,9.457 5,9.718 5,10.007L5,21.993C5,22.283 5.119,22.544 5.313,22.728L13.05,16L5.315,9.274ZM27.687,9.272C27.881,9.456 28,9.717 28,10.007L28,21.993C28,22.282 27.879,22.543 27.685,22.726L19.95,16L27.687,9.272ZM19.202,16.651L26.5,23L6.5,23L13.798,16.651L16.5,19L19.202,16.651ZM6.004,8C4.897,8 4,8.895 4,9.994L4,22.006C4,23.107 4.89,24 6.004,24L26.996,24C28.103,24 29,23.105 29,22.006L29,9.994C29,8.893 28.11,8 26.996,8L6.004,8ZM16.5,17.7L26.5,9L6.5,9L16.5,17.7Z" style="fill:white;"/>
+            </g>
+        </g>
+    </g>
+</svg>

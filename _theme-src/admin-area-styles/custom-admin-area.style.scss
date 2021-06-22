@@ -1,0 +1,15 @@
+@import '../style-vars.scss';
+/* Merriweather, Roboto */
+/* 
+    TODO Revise these fonts
+    font-family: 'Merriweather', serif;
+    font-family: 'Roboto', sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto&display=swap');
+
+body#tinymce {
+    margin: 10px auto;
+}
+body#tinymce a {
+    color: #4848aa;
+}

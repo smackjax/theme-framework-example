@@ -1,0 +1,48 @@
+@import '../../style-vars.scss';
+
+.main-header {}
+
+.intro-wrapper {
+    position: relative;
+    width: 98%;
+    max-width: 420px;
+    margin: auto;
+    padding: 30px 10px 20px;
+}
+.writing-of {
+    font-size: 18px;
+}
+.j-edward-kruft {
+    text-align: center;
+    font-size: 10vw;
+    @media screen and (min-width: 490px) {
+        font-size: 48px;
+    }
+}
+
+.main-nav {
+    margin: auto;
+    width: 100%;
+    background-color: $color-primary;
+    padding: 7px 10px 2px;
+    text-align: center;
+
+    a,
+    .nav-item {
+        font-family: $font-primary;
+        font-size: 18px;
+        margin: 0 5px;
+        padding: 5px 5px;
+        color: white;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+            cursor: pointer;
+        }
+    
+    }
+    a.current {
+        text-decoration: underline;
+    }
+}
+

@@ -1,0 +1,117 @@
+@import '../../style-vars.scss';
+
+#contact-modal {
+    .modal-content {
+        max-width: 800px;
+    }
+    .modal-title {
+        padding-top: 2px;
+    }
+    .modal-title-icon {
+        border-width: 0;
+        width: 38px;
+        height: auto;
+        padding: 0;
+        margin: 0;
+
+        @media screen and (min-width: 800px) {
+                width: 5.3vw;
+                transform: translate(-50%, -2.3vw);
+        }
+        @media screen and (min-width:1287px){
+            width: 68px;
+            transform: translate(-50%, -30px);
+        }
+    }
+    
+    
+}
+
+.form-wrapper {
+    padding-top: 0;
+    padding-bottom: 30px;
+}
+.contact-blurb-wrapper {
+    position: relative;
+    
+    max-width: 620px;
+    margin: 0 auto 10px;
+    padding-bottom: 5px;
+
+
+    text-align: center;
+
+
+    &:after {
+        content: " ";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        display: block;
+        width: 70%;
+        height: 1px;
+
+        background-color: rgb(210, 210, 210);
+    }
+}
+.modal-contact-form {
+    display: block;
+    max-width: 600px;
+    margin: auto;
+}
+.contact-label {
+    display: block;
+    margin-top: 15px;
+}
+.label-text {}
+.contact-input{   
+    width: 100%;
+
+    padding: 5px;
+
+    font-family: $font-primary;
+    font-size: 18px;
+
+    background-color: rgb(255,255,255);
+}
+.contact-input.text {}
+.contact-input.area {
+    min-height: 136px;
+    resize: vertical;
+}
+
+.contact-send-btn {
+    display: block;
+
+    margin-top: 15px;
+    margin-left: auto;
+    padding: 8px 30px 3px;
+
+    color: white;
+    font-family: $font-primary;
+    font-size: 20px;
+
+    background-color: $color-primary;
+
+    &:hover {
+        background-color: black;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+
+.contact-input,
+.contact-send-btn {
+    display: block;
+    border: 1px solid rgb(220, 220, 220);
+    box-shadow: 1px 1px 4px 1px rgba(0,0,0,.3);
+}
+
+@media screen and (min-width: 800px){
+    .form-wrapper {
+        padding-top: 50px;
+    }
+}

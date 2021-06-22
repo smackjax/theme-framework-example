@@ -1,0 +1,20 @@
+<script>
+    // Prepare modal function
+    var activeModalClass = ' active';
+
+    function openModal(modalId) {
+        var modal = document.getElementById(modalId);
+        if(modal) {
+            modal.className += activeModalClass;
+            document.getElementsByTagName('body')[0].className += " disable-scroll-from-modal";
+            // if(closeNav) closeNav();
+        }
+    }
+    function closeModal(modalId) {
+        var modal = document.getElementById(modalId);
+        var body = document.getElementsByTagName('body')[0];
+        modal.className = modal.className.replace(/\bactive\b/g, "");
+        body.className = body.className.replace(/\bdisable-scroll-from-modal\b/g, "").trim();
+        
+    }
+</script>

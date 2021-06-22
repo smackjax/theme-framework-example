@@ -1,0 +1,41 @@
+<% var images = require("../../images"); %>
+<header id="top" class='main-header'>
+    <div class="menu-wrap">
+        <!-- Logo container -->
+        <a href='<?php echo get_home_url(); ?>' class="logo-wrap async-wrap"
+        data-full-res="<%- images.logo %>"
+        data-img-alt="J Edward Kruft logo"
+        ></a>
+        
+        
+        <!-- When this is checked, nav menu is dropped -->
+        <input type='checkbox' id='nav-tog'>
+
+        <!-- Hamburger btn -->
+        <button id="toggle-nav-btn" class="drop-trigger">
+            <!-- Hamburg bars -->
+            <span class="btn-bar top"></span>
+            <span class='btn-bar middle'></span>
+            <span class='btn-bar bottom'></span>
+        </button>
+
+        <!-- Menu -->
+        <nav id="main-nav" class="main-nav">
+            <!-- This covers the whole background of the dropped menu -->
+            <button id="close-nav-digitizer" class='nav-revert'></button>
+            
+            <!-- Menu items -->
+            <?php echo get_stripped_nav_items("main_menu"); ?>
+            <button class="nav-item contact-nav-item" id="header-open-contact-modal-btn">Contact</button>
+        </nav>
+    </div>
+</header>
+
+<script>
+    document.getElementById("toggle-nav-btn").addEventListener("click", toggleNav);
+    document.getElementById("close-nav-digitizer").addEventListener("click", closeNav);
+
+    document.getElementById("header-open-contact-modal-btn").addEventListener("click", function(){
+        openModal('contact-modal');
+    });
+</script>

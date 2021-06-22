@@ -1,0 +1,33 @@
+<script>
+    /* Open */
+    function openNav(e) {
+        e.preventDefault();
+        // Check nav toggle
+        document.getElementById("nav-tog").checked = true;
+        // Get body element, Append disable-scroll-y class
+        document.getElementsByTagName('body')[0].className += "  disable-scroll-from-nav";
+        document.getElementById('main-nav').className += " active";
+    }
+
+    /* Close */ 
+    function closeNav() {
+        //  Uncheck nav toggle
+        document.getElementById("nav-tog").checked = false;
+        
+        // Remove active class from main nav
+        var mainNav = document.getElementById('main-nav');
+        mainNav.className = mainNav.className.replace(/\bactive\b/g, "").trim();
+
+        // Get body element 
+        var body = document.getElementsByTagName('body')[0];
+        // Remove disable scroll class
+        body.className = body.className.replace( /\bdisable-scroll-from-nav\b/g, "").trim();
+    }
+
+    function toggleNav(e) {
+        var body = document.getElementsByTagName('body')[0];
+        
+        if(body.className.search("disable-scroll-from-nav") > -1) closeNav(e);
+        else openNav(e); 
+    }
+</script>

@@ -1,0 +1,47 @@
+<% 
+    var images = require('../../images');
+%>
+
+<div id="about-modal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-title-wrapper">
+                <div class="modal-title-icon about">?</div>
+                <h5 class="modal-title">ABOUT</h5>
+            </div>
+            <button id="close-about-modal-btn" class="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-content">
+            <p>Thank you for visiting my Website, which features my fiction writing. I have been writing since I was very young, which eventually led to an MFA in fiction writing from Brooklyn College. I have had many enjoyable and a few less-enjoyable interruptions in my writing over the years. I was pleased to resume writing seriously, if sporadically (thereby defining "seriously" differently from many writers, I suppose) in the last several years. These pages showcase the pieces I have had published in that time.</p>
+
+            <p>The stories are listed in the order of their publication (most recent first). In most cases the stories are preceded with a smattering of information about the publication history, and the inspiration, genesis or the process pertaining to that story. I also include, in most cases, the BIO that ran with the story. Therefore, I don't offer much in terms of biographical information here, except to say:</p>
+
+            <p><b>I hail from Washington State. I have lived in New York City for 30+ years, and I am lucky enough to spend many weekends upstate in the Catskills of Sullivan County, NY. </b></p>
+
+            <p>
+                I can also be reached and/or followed via Twitter:
+
+                <a href="https://twitter.com/jedwardkruft" target="_blank" rel="noopener noreferrer" class="twitter-link">
+
+                    <span class="twitter-icon-wrap">
+                        <img src="<%- images.logoTwitter %>" alt="Twitter logo" target="_blank" />
+                    </span>
+
+                    <span class="twitter-handle">@jedwardkruft</span>
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div id="about-digitizer" class="modal-digitizer"></div>
+</div>
+
+<script>
+    var closeAboutModal = function(){ 
+        closeModal("about-modal"); 
+    };
+    document.getElementById("about-digitizer").addEventListener("click", closeAboutModal);
+    document.getElementById("close-about-modal-btn").addEventListener("click", closeAboutModal);
+
+    
+</script>

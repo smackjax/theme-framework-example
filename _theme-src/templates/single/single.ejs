@@ -1,0 +1,121 @@
+<?php
+/**
+* Template Name: Single story
+*/
+
+global $page_link_search_cast;
+?>
+<% var images = require('../../images'); %>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>TODO</title>
+        <meta name="description" content="TODO <?php echo get_field('google_result_description'); ?>">
+        <meta name="keywords" content="TODO <?php echo get_field('google_keywords'); ?>">
+        <?php get_header('common-head-scripts'); ?>
+        <?php wp_head(); ?>
+    </head>
+    <body>
+        <!-- Header -->
+        <?php get_header(); ?>
+        
+        <div class="async-wrap page-bg"
+        data-low-res=""
+        data-full-res="<%- images.bg %>"
+        ></div>
+
+        <div class="screen-height-wrap">
+        
+            <div class="story-outer-wrapper">
+        
+                <?php
+                // Start the loop.
+                while ( have_posts() ) {  
+                    // Get post
+                    the_post();
+                    $next_post_link = custom_next_post_link($post->ID);
+                    $prev_post_link = custom_prev_post_link($post->ID);
+                ?>
+
+                    <!-- POST LIST NAV -->
+                    <div class="story-nav-links-wrapper top">
+                        <a href="<?php echo $next_post_link; ?> " class="post-nav-link prev">
+                            <img src="<%- images.icons.chevronLeft %>" class="post-nav-chevron" alt="Left chevron"/> 
+                            <span class="post-nav-link-text">Previous <span class="story-fade-text">story</span> </span>
+                        </a>
+
+                        <a href="<?php echo $page_link_writing_page; ?>" class="post-nav-link return">RETURN TO SEARCH</a>
+
+                        <a href="<?php echo $prev_post_link; ?> " class="post-nav-link next">
+                            <span class="post-nav-link-text">Next <span class="story-fade-text">story</span> </span>
+                            <img src="<%- images.icons.chevronRight %>" class="post-nav-chevron" alt="Right chevron"/>
+                        </a>
+                    </div>
+
+                    <?php 
+                    $preface_piece_content = get_field('pre_piece_section');
+                    if( trim($preface_piece_content) ) { ?>
+                    <section id="preface" class="preface-wrapper">
+                        <div class="preface-title-wrapper">
+                            <h1 class="preface-title">"<?php echo strtoupper(the_title('','',false)); ?>"</h1>
+                            <h2 class="preface-sub-title">(PREFACE)</h2>
+                        </div>
+                        <div class="preface-content-wrapper">
+                            <?php echo $preface_piece_content; ?>
+                        </div>
+
+                    </section>
+                    <?php } ?>
+
+                    <section id="story" class="story-wrapper">
+                        <div class="story-title-wrapper">
+                            <h1 class="story-title"><?php echo strtoupper(the_title('','',false)); ?></h1>
+                            <h3 class="written-by">By J. Edward Kruft</h3>
+                        </div>
+                        <div class="story-content-wrapper">
+                            <?php the_content();?>
+                        </div>
+
+                        
+                    </section>
+
+                    <!-- POST LIST NAV -->
+                    <div class="story-nav-links-wrapper top">
+                        <a href="<?php echo $next_post_link; ?> " class="post-nav-link prev">
+                            <img src="<%- images.icons.chevronLeft %>" class="post-nav-chevron" alt="Left chevron"/> 
+                            <span class="post-nav-link-text">Previous <span class="story-fade-text">story</span> </span>
+                        </a>
+
+                        <a href="<?php echo $page_link_writing_page; ?>" class="post-nav-link return">RETURN TO SEARCH</a>
+
+                        <a href="<?php echo $prev_post_link; ?> " class="post-nav-link next">
+                            <span class="post-nav-link-text">Next <span class="story-fade-text">story</span> </span>
+                            <img src="<%- images.icons.chevronRight %>" class="post-nav-chevron" alt="Right chevron"/>
+                        </a>
+                    </div>
+
+                    <?php 
+                    $post_piece_content = get_field('post_piece_section');
+                    if( trim($post_piece_content) ) { ?>
+                        <section id="postface" class="postface-wrapper">
+                            <?php echo get_field('article_subtitle'); ?>
+                            <div class="postface-content-wrapper">
+                                <?php echo $post_piece_content; ?>
+                            </div>
+                        </section>
+                    <?php } ?>
+                        
+                        
+                    
+
+                <?php } // END LOOP ?>
+            </div>
+
+        </div>
+         
+        <?php get_footer(); ?>
+        <?php wp_footer(); ?>
+    </body>
+</html>

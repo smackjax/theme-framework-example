@@ -1,0 +1,25 @@
+<% var images = require("../../images"); %>
+<header class="main-header">
+    <div class="intro-wrapper">
+        <h2 class="writing-of">The writing of</h2>
+        <h1 class="j-edward-kruft">J. Edward Kruft</h1>
+    </div>
+
+    <!-- Menu -->
+    <nav id="main-nav" class="main-nav">
+        <!-- Menu items -->
+        <?php echo get_stripped_nav_items("main_menu"); ?>
+
+        <button class="nav-item contact-nav-item" id="header-open-about-modal-btn">ABOUT</button>
+        <button class="nav-item contact-nav-item" id="header-open-contact-modal-btn">CONTACT</button>
+    </nav>
+</header>
+
+<script>
+    document.getElementById("header-open-about-modal-btn").addEventListener("click", function(){
+        openModal('about-modal');
+    });
+    document.getElementById("header-open-contact-modal-btn").addEventListener("click", function(){
+        openModal('contact-modal');
+    });
+</script>

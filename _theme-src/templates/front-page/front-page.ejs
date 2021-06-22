@@ -1,0 +1,176 @@
+<?php
+/**
+* Template Name: front-page
+*/
+
+global $wp_query;
+global $page_link_search_writing;
+$original_query = $wp_query;
+?>
+
+<% var images = require('../../images'); %>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>TODO</title>
+        <meta name="description" content="TODO">
+        <meta name="keywords" content="TODO">
+        
+        <!-- Minified version of `es6-promise-auto` below. -->
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+
+        <?php get_header('common-head-scripts'); ?>
+        <?php wp_head(); ?>
+    </head>
+
+    <body>
+        <!-- Header -->
+        <?php get_header(); ?>
+       
+
+        <div class="async-wrap page-bg"
+        data-low-res=""
+        data-full-res="<%- images.bg %>"
+        ></div>
+        
+        <div class="screen-height-wrap">
+
+            <div class="page-intro-description-wrapper">
+                <p>In addition to my short stories and flash fiction here, I have written a <a class="novella-link">novella</a> about various topics my web developer couldn't find when creating this site (TODO rewrite this).</p>
+                <a class="novella-standalone-link">Click here to read my novella.</a>
+
+                <p class="new-stories">Please stop by again, as content will be added as new stories get published.</p>
+            </div>
+
+        <?php
+        /* =============================
+            PAGE QUERY
+        ============================= */
+        $writings_per_page = 12;
+        $piece_search_GET_key = 'search';
+
+        $paged = (get_query_var('page')) ? get_query_var('page') : 1;
+        
+
+        // Query args
+        $query = [
+            'post_type' => ['flash-fiction', 'short-story'],
+            'posts_per_page' => $writings_per_page, 
+            'paged' => $paged,
+            'orderby' => 'publish_date',
+            'order' => 'DESC',
+            's' => false
+        ];
+
+        $writing_search = $_GET[$piece_search_GET_key];
+
+        if($writing_search) {
+            $query['s'] = $writing_search;
+        }
+
+        $wp_query = new WP_Query( $query );
+        ?>
+
+        <!-- SEARCH -->
+        <div id="search-section" class="search-section-outer-wrapper">
+
+            <div id="search-results" class="search-section-wrapper">   
+                <?php global $link_cast_search; ?>
+
+                <label for="writing-search-input" class="search-writing-label">Search titles</label>
+
+                <form class="search-cast-form" role="search" action="<?php echo $page_link_writing_page; ?>#search-results" method="get" id="searchform">
+                    <input class="search-cast-input" id="writing-search-input" type="text" name="search" placeholder='(e.g "cowboy")' value="<?php echo $writing_search; ?>"/>
+                    
+                    <!-- Current search -->
+                    <?php if($writing_search) { ?>
+                        <div class="current-search-wrapper">current search: <span class="current-search-text"><?php echo $writing_search; ?></span></div>
+                    <?php } ?>
+
+                    <div class="search-btns-wrapper">
+                        <a href="<?php echo $page_link_writing_page; ?>" id="clear-search-button" class="search-clear-btn">clear</a>
+                        <input class="search-cast-btn" type="submit" alt="Search" value="Search" />
+                    </div>
+                </form>
+            </div>
+
+            
+         </div>
+
+        <!-- POSTS -->
+        <?php if ($wp_query->found_posts > 0){ ?>
+            <div class="writing-pieces-section-wrapper">
+
+                <?php if( $wp_query->found_posts > $writings_per_page ) { ?>  
+                    <!-- PAGINATION -->
+                    <div class="pagination-wrapper">
+                        <?php 
+                            the_posts_pagination( array(
+                                'mid_size' => 2,
+                                'prev_text' => __( 'prev', 'textdomain' ),
+                                'next_text' => __( 'next', 'textdomain' ),
+                                'screen_reader_text' => ( '' )
+                            ) );
+                        ?>
+                    </div>
+                <?php } ?>
+
+                <div class="writing-pieces-wrapper">
+                    <?php
+                    // Start the loop
+                    while ( have_posts() ) {  
+                        // Get post
+                        the_post();
+                        global $post;
+                    ?>
+                        <a class="writing-piece" href="<?php echo get_permalink($post); ?>">
+                            <div style="background-image: url(<?php echo get_field('writing_piece_image'); ?>);" class="writing-piece-img">
+                                <div class="writing-piece-title"><?php echo $post->post_title; ?></div>
+                            </div>
+                        </a>
+                    <?php } // End the loop. ?> 
+                </div>
+
+                <?php if( $wp_query->found_posts > $writings_per_page ) { ?>
+                    <!-- FOOTER PAGINATION -->
+                    <div class="pagination-wrapper">
+                        <?php 
+                            the_posts_pagination( array(
+                                'mid_size' => 2,
+                                'prev_text' => __( 'prev', 'textdomain' ),
+                                'next_text' => __( 'next', 'textdomain' ),
+                                'screen_reader_text' => ( '' )
+                            ) );
+                        ?>
+                    </div>
+                <?php } ?>
+            </div>
+        <?php } else { ?>
+            <!-- NO RESULTS -->
+            <div class="no-results-outer-wrapper">
+                <div class="no-results-wrapper">
+                    <h4 class="no-results-heading">NO RESULTS</h4>
+                    <p>Your search did not return any writing pieces.</p>
+                </div>
+            </div>
+        <?php } ?>
+
+        
+        
+    </div> <!-- END SCREEN HEIGHT WRAP -->
+        
+
+        <?php
+            // RESET QUERY
+           $wp_query = null;
+            $wp_query = $original_query;
+           wp_reset_postdata();  
+        ?>
+
+        <?php get_footer(); ?>
+        <?php wp_footer(); ?>
+    </body>
+</html>

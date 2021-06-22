@@ -1,0 +1,81 @@
+<!-- ASYNC LOADING SCRIPT -->
+<script>
+    var asyncImgWrapClass = 'async-wrap';
+    // Class to append when image is loaded
+    var asyncImgClass = ' async-img';
+    var lowResClass = ' low-res';
+    var loadedClass = ' loaded';
+    // Data set location of vars
+    var dFullRes = 'data-full-res';
+    var dLowRes = 'data-low-res';
+    var dGradient = 'data-gradient';
+    var dGradientTo = 'data-gradient-to';
+    var dImgClass = 'data-img-class';
+    var dImgAlt = 'data-alt';
+    var defaultAlt = 'Background image';
+
+
+    // Function loads an image *after* returning it's <img> element
+    function loadAsyncImage(src, lowRes, classString, gradient, gradientTo, imgAlt){
+        var imgEl = new Image();
+        // Transparent gif
+        imgEl.src = 'data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+        // Add image classes
+        imgEl.className = asyncImgClass + ' ' + (classString || '');
+        // Set alt
+        imgEl.alt = imgAlt || defaultAlt;
+        // Appends low-res class(if needed)
+        if(lowRes) imgEl.className += lowResClass;
+        // This is a loading element(never appended to the document)
+        imgLoader = new Image();
+        imgLoader.style.display = 'none';
+        // Callback
+        var imgCb = function(){
+            var linearGradient = '';
+            // Gradient defaults to the first value being used both from/to
+            if(gradient) linearGradient = 'linear-gradient(' + gradient + ',' + (gradientTo || gradient) +'),';
+            // Append real src as background to image element that is returned
+            imgEl.setAttribute('style', ('background-image: ' + linearGradient + "url('" + src + "')"));
+            imgEl.className += ' loaded';
+        };
+        // Set callback
+        imgLoader.onload = imgCb;
+        // Load image
+        // setTimeout(function() {
+            imgLoader.src = src;
+        // }, 1);
+    
+        return imgEl; 
+    }
+
+    // Automatically load async images 
+    function getAsyncImages(){
+        var asyncImageWraps = document.getElementsByClassName(asyncImgWrapClass);
+        for(var q = 0; q < asyncImageWraps.length; q++){
+            var asyncWrap = asyncImageWraps[q];
+            // Get img data
+            var fullResSrc = asyncWrap.getAttribute(dFullRes);
+            var lowResSrc  = asyncWrap.getAttribute(dLowRes);
+            var gradient = asyncWrap.getAttribute(dGradient);
+            var gradientTo = asyncWrap.getAttribute(dGradientTo);
+            var imgClass = asyncWrap.getAttribute(dImgClass);
+            var imgAlt = asyncWrap.getAttribute(dImgAlt) || defaultAlt;
+
+            // Remove current background image from wrap
+            if(lowResSrc || fullResSrc) asyncWrap.style.backgroundImage = 'none';
+
+            // Low res
+            if(lowResSrc) 
+                asyncWrap.appendChild(
+                    loadAsyncImage(lowResSrc, true, imgClass, gradient, gradientTo, imgAlt)
+                );
+            // Full res
+            if(fullResSrc)
+                asyncWrap.appendChild(
+                    loadAsyncImage(fullResSrc, false, imgClass, gradient, gradientTo, imgAlt)
+                );
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', getAsyncImages); 
+</script>

@@ -1,0 +1,39 @@
+
+<script>
+    // Capture form submit events
+    function initializeAjaxForm(formElementId) {
+        document.getElementById(formElementId).addEventListener("submit", handleFormSubmit);
+    }
+    
+    function handleFormSubmit(e){
+        // Stop the page from reloading like a normal form submit
+        e.preventDefault(); 
+        
+        
+        var formElement; 
+        // Check first reference for form element
+        if (e.target) formElement = e.target;
+        // Check second place for form element
+        else {
+            if (!e.srcElement) throw new Error ("Couldn't find form element from event.");
+            formElement = e.srcElement;
+        }
+        // Set to 'POST'
+        formElement.method = "post";
+    
+        var submitFunction = formElement.getAttribute("onsubmit");
+        var formVals = formValsToObj(formElement);
+    
+        // Call the form-specified function to handle its data
+        window[submitFunction](formVals, formElement);
+    }
+    
+    // Check for errors and convert form input values into obj
+    function formValsToObj(e) {
+        for (var t = e.elements, n = {}, a = 0; a < t.length; a++) {
+            var o = t[a];
+            if (o.value) o.name ? o.name : o.id ? o.id : ("no-name-please-set-name", alert("No 'name' set on input. See console."), console.log("No 'name' attribute set on element with value: ", o.value)), n[o.name] = o.value
+        }
+        return n;
+    }
+</script>

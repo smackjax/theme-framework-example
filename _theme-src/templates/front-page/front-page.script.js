@@ -1,0 +1,1 @@
+// Handle newsletter signup request

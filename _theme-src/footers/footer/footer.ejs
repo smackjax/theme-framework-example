@@ -1,0 +1,31 @@
+<% var images = require('../../images'); %>
+
+<footer class="main-footer">
+    <div class="copyright">
+        <?php 
+            $current_datetime = new DateTime("now", new DateTimeZone('EDT'));
+            $current_year = $current_datetime->format('Y');
+            $copyright_text = $current_year;
+            if($current_year !== '2020') { $copyright_text = "2020 - $current_year"; }
+        ?>
+        <a href="<?php echo get_home_url(); ?>">&copy; J. Edward Kruft <?php echo $copyright_text; ?></a>
+    </div>
+    <div class="credits">
+        <a href="https://maxbernard.design" target="_blank">Website design by Max Bernard</a>
+    </div>
+</footer>
+
+<!-- Loading spinner -->
+<div id="loading-spinner-wrap">
+    <div id="signup-loading-spinner" class="async-wrap"
+    data-full-res="<%- images.loadingSpinner %>"
+    data-alt=" "
+    ></div>
+</div>
+
+<!-- Contact modal -->
+<%- include ../../modals/contact-modal/contact-modal.ejs %>
+
+<!-- About modal -->
+<%- include ../../modals/about-modal/about-modal.ejs %>
+
